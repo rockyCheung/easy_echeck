@@ -1,0 +1,36 @@
+#yaml config
+#服务器的基础配置
+server:
+    log:
+        log_file: echeck.log
+        logger_name: main
+        logger_level: DEBUG
+#http协议检查
+echeck:
+    url:
+        - https://www.baidu.com
+        - https://cn.bing.com
+        - https://www.google.com
+#        - http://www.pathcurve.cn
+#        - http://www.easy.com
+
+    index_file: echeck.htm
+#网络联通性检查
+eping:
+    ip:
+        - 127.0.0.1
+        - 172.20.78.115
+        - 172.20.79.255
+        - google.cn
+        - test.com
+escan:
+    - host:
+        ip: 127.0.0.1
+        port:
+            - 80
+            - 8080
+    - host:
+        ip: 172.20.78.115
+        port:
+            - 80
+            - 8080
