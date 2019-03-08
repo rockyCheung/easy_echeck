@@ -10,6 +10,30 @@ echeck是一个做联通性检查的小工具，包括eping、escan、echeck等
 
 ####1、安装Python3
 
+##### python3安装
+工具的开发基于Python3.7版本，未做过兼容性测试，使用时尽量安装3.7版本
+* python3下载
+
+>> [Python下载地址](https://www.python.org)
+
+* 选择对应版本进行安装
+
+##### 安装virtualenv
+
+>> 建议使用virtualenv，以简化外部环境对工具安装带来的影响,如果是linux或mac，可采用如下命令进行安装
+```
+$ pip install virtualenv
+```
+>> 可执行help查看virtualenv使用指令
+##### 创建虚拟环境
+```
+$ virtualenv -p '指定python安装路径' venv
+```
+##### 激活虚拟环境
+```
+$ source venv/bin/activate
+```
+
 ####2、安装ECHECK
 ```
 $ git clone https://github.com/rockyCheung/easy_echeck.git
