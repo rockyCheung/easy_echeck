@@ -29,6 +29,7 @@ escan:
         port:
             - 80
             - 8080
+            - 9090
     - host:
         ip: 172.20.78.115
         port:
@@ -41,5 +42,8 @@ eshell:
         user_name: root
         password: Roc7758521$
         exec_command:
-             - docker rmi 8a8f0f7d6c16
+#             - docker rmi 8a8f0f7d6c16
              - docker images
+             - df -h
+             - ulimit -a
+             - ls /opt
