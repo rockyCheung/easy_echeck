@@ -17,7 +17,11 @@ class EShell():
         logger.info('/*************************************************')
         for cmd in cmds:
             stdin, stdout, stderr = ssh.exec_command(cmd)
-            logger.info("cmd:{}\tresult: {}\t".format(cmd, stdout.readlines()))
+            logger.info("cmd:{}\t".format(cmd))
+            result = stdout.readlines()
+            logger.info("result: ")
+            for re in result:
+                logger.info("  *{}\t".format(re))
         ssh.close()
         logger.info('*************************************************/')
         logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')
