@@ -148,7 +148,7 @@ eshell:
              - docker rmi 9b0c10cae863
              - docker images
 ```
-![](image_del_1.png)
+![](http://www.pathcurve.cn/assets/uploads/files/1552289146847-image_del_1.png)
 * 执行
 ```
 $ eshell
