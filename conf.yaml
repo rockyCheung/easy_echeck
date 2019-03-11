@@ -34,3 +34,12 @@ escan:
         port:
             - 80
             - 8080
+eshell:
+    - shell_cell:
+        ip: 47.92.28.203
+        port: 22322
+        user_name: root
+        password: Roc7758521$
+        exec_command:
+             - docker rmi 9b0c10cae863
+             - docker images

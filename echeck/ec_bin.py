@@ -6,7 +6,7 @@ from echeck.conf.config import Config
 from echeck.Curlclient import Curlclient
 from echeck.eping import *
 from echeck.escan import EScan
-__version__ = "1.0.1"
+from echeck.eshell import EShell
 
 def banner():
     print('''
@@ -38,6 +38,7 @@ props = Config(profile)  # 读取文件
 url_list = props.getURLS()
 ip_list = props.getIPList()
 host_list = props.getHostAndPort()
+eshell_cmds = props.getEShellCommands()
 indexFile = props.getIndexFile()
 logFile = props.getLogFile()
 loggerLevel = props.getLoggerLevel()
@@ -79,5 +80,10 @@ def scan_port():
     escan = EScan(host_list)
     escan.loopSacn(logger=logger)
 
+def exec_comand():
+    for shell_box in eshell_cmds:
+        shell_cell = shell_box['shell_cell']
+        eshell = EShell(shell_cell['ip'],shell_cell['port'],shell_cell['user_name'],shell_cell['password'])
+        eshell.exec_commands(shell_cell['exec_command'],logger=logger)
 # if __name__ == '__main__':
 #     scan_port()

@@ -14,6 +14,7 @@ class Config():
         self.log_info = self.server_info['log']
         self.eping = self.conf.get('eping')
         self.escan = self.conf.get('escan')
+        self.eshell = self.conf.get('eshell')
 
     def getURLS(self):
         return self.echeck['url']
@@ -32,8 +33,13 @@ class Config():
 
     def getIPList(self):
         return self.eping['ip']
+
     def getHostAndPort(self):
         return self.escan
+
+    def getEShellCommands(self):
+        return self.eshell
+
 # conf = Config('/Users/zhangpenghong/Documents/workspace/easy_check/conf.yaml')
 # # urls = conf.getECHECK()
 # # print(conf.getURLS())

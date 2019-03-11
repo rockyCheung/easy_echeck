@@ -1,18 +1,23 @@
 import paramiko
 
-if __name__ == '__main__':
-    # private_key_path = '/home/auto/.ssh/id_rsa'
-    # key = paramiko.RSAKey.from_private_key_file(private_key_path)
-    ip = '47.92.28.203'
-    port = 22322
-    user_name = "root"
-    user_password = r'Roc7758521$'
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+class EShell():
+    def __init__(self,host,port,user_name,password):
+        self.HOSTNAME = host
+        self.PORT = port
+        self.USER_NAME = user_name
+        self.PASSWORD = password
 
-    ssh.connect(ip, port, user_name, user_password)
-    cmd = 'ls /opt'
-    stdin, stdout, stderr = ssh.exec_command(cmd)
+    def exec_commands(self,cmds,**kwargs):
+        logger = kwargs.get("logger")
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(self.HOSTNAME, self.PORT, self.USER_NAME, self.PASSWORD)
 
-    print(stdout.readlines())
-    ssh.close()
+        logger.info('/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        logger.info('/*************************************************')
+        for cmd in cmds:
+            stdin, stdout, stderr = ssh.exec_command(cmd)
+            logger.info("cmd:{}\tresult: {}\t".format(cmd, stdout.readlines()))
+        ssh.close()
+        logger.info('*************************************************/')
+        logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')

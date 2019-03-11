@@ -133,3 +133,24 @@ escan:
 ```
 $ escan
 ```
+
+#### 5、eshell
+*配置
+eshell适合于远程执行脚本，以远程执行删除镜像为例，具体配置示例如下：
+```
+eshell:
+    - shell_cell:
+        ip: 24.110.255.11
+        port: 22
+        user_name: root
+        password: 123456
+        exec_command:
+             - docker rmi 9b0c10cae863
+             - docker images
+```
+![](image_del_1.png)
+* 执行
+```
+$ eshell
+```
+执行过程中可能会有警告信息CryptographyDeprecationWarning，这是因为paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，不影响使用，若觉得碍眼可以将cryptography版本调整为2.4.2。
