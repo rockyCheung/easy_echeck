@@ -148,6 +148,11 @@ eshell:
              - docker rmi 9b0c10cae863
              - docker images
 ```
+同时执行两个指令
+> docker rmi 9b0c10cae863 删除ID：9b0c10cae863的镜像
+
+> docker images 查询本机所有镜像
+
 ![](http://www.pathcurve.cn/assets/uploads/files/1552289146847-image_del_1.png)
 * 执行
 ```
