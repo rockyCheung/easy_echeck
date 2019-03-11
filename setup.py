@@ -19,7 +19,7 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
     ],
     author='Rocky',
-    url='https://github.com/rockyCheung/Cobra.git',
+    url='https://github.com/rockyCheung/easy_echeck.git',
     author_email='274935730@qq.com',
     license='PSF',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
