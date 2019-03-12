@@ -21,7 +21,7 @@ class EShell():
             result = stdout.readlines()
             logger.info("result: ")
             for re in result:
-                logger.info("  *{}\t".format(re))
+                logger.info(("  *{}\t".format(re)).replace('\n',''))
         ssh.close()
         logger.info('*************************************************/')
         logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')

@@ -1,12 +1,18 @@
-# ECHECK 介绍
+# ECHECK
 
 ## ECHECK可以做什么
 
-echeck是一个做联通性检查的小工具，包括eping、escan、ecurl、eshell等
+* echeck是一个基于Python语言开发的脚本工具，主要包括eping、escan、ecurl、eshell四个核心指令
+* eping可以同时ping多个服务地址，并输出结果
+* ecurl与curl指令相同，可以同时尝试访问多个地址，并输出结果
+* escan为端口嗅探工具，最终返回端口嗅探结果
+* eshell可以远程执行指令
 
 ## ECHECK的使用
 
 ### 安装
+
+ECHECK基于Python3.7开发，安装工具前需要先安装python3
 
 #### 1、安装Python3
 
@@ -16,7 +22,7 @@ echeck是一个做联通性检查的小工具，包括eping、escan、ecurl、es
 
 > [Python下载地址](https://www.python.org)
 
-* 选择对应版本进行安装
+* 选择对应版本进行安装即可
 
 ##### 安装virtualenv
 

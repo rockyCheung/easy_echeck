@@ -228,6 +228,6 @@ def verbose_ping(dest_addr: str, count: int = 4, *args, **kwargs):
         logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')
         
 # if __name__ == "__main__":
-
-    # verbose_ping("127.0.0.1",logger=None)
+# 
+#     verbose_ping("127.0.0.1",logger=None)
     # verbose_ping("8.8.8.8")
