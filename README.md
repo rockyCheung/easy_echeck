@@ -34,7 +34,7 @@ $ virtualenv -p '指定python安装路径' venv
 $ source venv/bin/activate
 ```
 
-####2、安装ECHECK
+#### 2、安装ECHECK
 ```
 $ git clone https://github.com/rockyCheung/easy_echeck.git
 $ cd easy_echeck
@@ -58,8 +58,8 @@ ecurl:
         - https://www.baidu.com
         - https://cn.bing.com
         - https://www.google.com
-#        - http://www.pathcurve.cn
-#        - http://www.easy.com
+        - http://www.pathcurve.cn
+        - http://www.easy.com
 
     index_file: echeck.htm
 #网络联通性检查
@@ -141,7 +141,9 @@ $ escan
 ```
 
 #### 5、eshell
-*配置
+
+* 配置
+
 eshell适合于远程执行脚本，以远程执行删除镜像为例，具体配置示例如下：
 ```
 eshell:
@@ -154,10 +156,20 @@ eshell:
              - docker rmi 9b0c10cae863
              - docker images
 ```
-同时执行两个指令
+支持同时执行多个指令
 > docker rmi 9b0c10cae863 删除ID：9b0c10cae863的镜像
 
 > docker images 查询本机所有镜像
+
+eshell支持任何远程服务器指令
+
+> df、ulimit、ls三个指令为例：
+```
+        exec_command:
+             - df -h
+             - ulimit -a
+             - ls /opt
+```
 
 ![](http://www.pathcurve.cn/assets/uploads/files/1552289146847-image_del_1.png)
 * 执行
@@ -165,3 +177,45 @@ eshell:
 $ eshell
 ```
 执行过程中可能会有警告信息CryptographyDeprecationWarning，这是因为paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，不影响使用，若觉得碍眼可以将cryptography版本调整为2.4.2。
+
+执行完成后echeck.log打印日志如下：
+
+```
+
+ /~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ /*************************************************
+  cmd:df -h	
+ result: 
+   *Filesystem      Size  Used Avail Use% Mounted on	
+   */dev/vda1        99G   13G   81G  14% /	
+   *devtmpfs        488M     0  488M   0% /dev	
+   *tmpfs           497M     0  497M   0% /dev/shm	
+   *tmpfs           497M  472K  496M   1% /run	
+   *tmpfs           497M     0  497M   0% /sys/fs/cgroup	
+   *tmpfs           100M     0  100M   0% /run/user/0
+   *overlay          99G   13G   81G  14% /var/lib/docker/overlay/d41066b7d1041eb3a74f6974cdda2991f19f67c4414879dc00785cfde4b88762/merged	
+   *shm              64M     0   64M   0% /var/lib/docker/containers/b72136e5913470347b2956450cbebd0fa6c91bb1e2bf1e019fb282ec37548e26/shm
+ cmd:ulimit -a	
+ result: 
+   *core file size          (blocks, -c) 0	
+   *data seg size           (kbytes, -d) unlimited	
+   *scheduling priority             (-e) 0	
+   *file size               (blocks, -f) unlimited	
+   *pending signals                 (-i) 3901	
+   *max locked memory       (kbytes, -l) 64	
+   *max memory size         (kbytes, -m) unlimited	
+   *open files                      (-n) 65535	
+   *pipe size            (512 bytes, -p) 8	
+   *POSIX message queues     (bytes, -q) 819200	
+   *real-time priority              (-r) 0	
+   *stack size              (kbytes, -s) 8192	
+   *cpu time               (seconds, -t) unlimited	
+   *max user processes              (-u) 3901	
+   *virtual memory          (kbytes, -v) unlimited	
+   *file locks                      (-x) unlimited	
+ cmd:ls /opt	
+ result: 
+   *docker	
+ *************************************************/
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
+```

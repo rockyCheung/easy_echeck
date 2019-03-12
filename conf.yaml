@@ -46,7 +46,7 @@ eshell:
         password: Roc7758521$
         exec_command:
 #             - docker rmi 8a8f0f7d6c16
-             - docker images
+#             - docker images
              - df -h
              - ulimit -a
              - ls /opt
