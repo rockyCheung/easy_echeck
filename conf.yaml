@@ -6,7 +6,7 @@ server:
         logger_name: main
         logger_level: DEBUG
 #http协议检查
-echeck:
+ecurl:
     url:
         - https://www.baidu.com
         - https://cn.bing.com
@@ -17,6 +17,8 @@ echeck:
     index_file: echeck.htm
 #网络联通性检查
 eping:
+    count: 4
+    timeout: 5
     ip:
         - 127.0.0.1
         - 172.20.78.115

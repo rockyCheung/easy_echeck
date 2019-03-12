@@ -11,7 +11,7 @@ paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃�
 '''
 setup(
     name='echeck',
-    version='1.0.0',
+    version='1.0.1',
     description='本项目用于批量环境检查',
     classifiers=[
         'License :: OSI Approved :: MIT License',
@@ -47,7 +47,7 @@ setup(
     scripts = [],
     entry_points = {
         'console_scripts': [
-            'echeck = echeck.ec_bin:check_url',
+            'ecurl = echeck.ec_bin:check_url',
             'eping = echeck.ec_bin:check_ip',
             'escan = echeck.ec_bin:scan_port',
             'eshell = echeck.ec_bin:exec_comand'

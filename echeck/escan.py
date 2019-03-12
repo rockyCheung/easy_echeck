@@ -118,29 +118,3 @@ class EScan():
         for hostInfo in self.hostList:
             open_ports,host,total_time = self.attempt_connections(hostInfo['host'])
             self.print_results(host, open_ports,logger)
-# def main():
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument('--host', action='store', dest='host', help='Informe o host')
-#     parser.add_argument('-w', '--write', help='Save the output results.', action='store', metavar='File')
-#     args = parser.parse_args()
-#
-#     if args.write is not None:
-#         print("Wait...\nWriting in {}".format(args.write))
-#         sys.stdout = open(args.write, 'w')
-#
-#     if args.host:
-#         try:
-#             host = args.host
-#             open_ports = attempt_connections(host)[0]
-#             print_results(host, open_ports)
-#             print(attempt_connections(host)[2])
-#         except socket.gaierror:
-#             print("You need to give proper hostname")
-#     else:
-#         parser.print_help()
-#         sys.exit(1)
-#
-#
-# if __name__ == '__main__':
-#     start_system()
-#     main()

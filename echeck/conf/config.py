@@ -9,7 +9,7 @@ class Config():
     def __init__(self,conf_file):
         file = open(conf_file,encoding='utf-8')
         self.conf = yaml.load(file)
-        self.echeck = self.conf.get('echeck')
+        self.ecurl = self.conf.get('ecurl')
         self.server_info = self.conf.get('server')
         self.log_info = self.server_info['log']
         self.eping = self.conf.get('eping')
@@ -17,7 +17,7 @@ class Config():
         self.eshell = self.conf.get('eshell')
 
     def getURLS(self):
-        return self.echeck['url']
+        return self.ecurl['url']
 
     def getLogFile(self):
         return self.log_info['log_file']
@@ -29,10 +29,16 @@ class Config():
         return self.log_info['logger_level']
 
     def getIndexFile(self):
-        return self.echeck['index_file']
+        return self.ecurl['index_file']
 
     def getIPList(self):
         return self.eping['ip']
+
+    def getPingCount(self):
+        return self.eping['count']
+
+    def getPingTimeout(self):
+        return self.eping['timeout']
 
     def getHostAndPort(self):
         return self.escan

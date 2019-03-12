@@ -148,7 +148,7 @@ def receive_one_ping(sock: socket, icmp_id: int, seq: int, timeout: int) -> floa
                 return time_recv - time_sent
 
 
-def ping(dest_addr: str, timeout: int = 4, unit: str = "s", src_addr: str = None, ttl: int = 64, seq: int = 0, size: int = 56,logger='') -> float or None:
+def ping(dest_addr: str, timeout: int = 4, unit: str = "s", src_addr: str = None, ttl: int = 64, seq: int = 0, size: int = 56,logger = None) -> float or None:
     """
     Send one ping to destination address with the given timeout.
 
@@ -203,23 +203,31 @@ def verbose_ping(dest_addr: str, count: int = 4, *args, **kwargs):
     src = kwargs.get("src")
     unit = kwargs.setdefault("unit", "ms")
     logger = kwargs.get("logger")
-    logger.info('/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-    logger.info('/*************************************************')
-    for i in range(count):
-        output_text = "ping '{}'".format(dest_addr)
-        output_text += " from '{}'".format(src) if src else ""
-        output_text += " ... "
-        print(output_text, end="")
-        delay = ping(dest_addr, seq=i, *args, **kwargs)
-        if delay is None:
-            respTime = "Timeout > {}s".format(timeout) if timeout else "Timeout"
-            logger.info(output_text+' %s' % respTime)
-        else:
-            respTime = "{value}{unit}".format(value=int(delay), unit=unit)
-            logger.info(output_text+' %s' % respTime)
+    if logger is None:
+        for i in range(count):
+            delay = ping(dest_addr, seq=i, *args, **kwargs)
+            print("Timeout > {}s".format(timeout) if timeout else "Timeout")
+            print("{value}{unit}".format(value=int(delay), unit=unit))
+    else:
+        logger.info('/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        logger.info('/*************************************************')
+        for i in range(count):
+            output_text = "ping '{}'".format(dest_addr)
+            output_text += " from '{}'".format(src) if src else ""
+            output_text += " ... "
+            print(output_text, end="")
+            delay = ping(dest_addr, seq=i, *args, **kwargs)
+            if delay is None:
+                respTime = "Timeout > {}s".format(timeout) if timeout else "Timeout"
+                logger.info(output_text + ' %s' % respTime)
+            else:
+                respTime = "{value}{unit}".format(value=int(delay), unit=unit)
+                logger.info(output_text + ' %s' % respTime)
 
-    logger.info('*************************************************/')
-    logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')
+        logger.info('*************************************************/')
+        logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')
+        
 # if __name__ == "__main__":
-#     verbose_ping("example.com")
-#     verbose_ping("8.8.8.8")
+
+    # verbose_ping("127.0.0.1",logger=None)
+    # verbose_ping("8.8.8.8")

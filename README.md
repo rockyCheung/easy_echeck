@@ -2,7 +2,7 @@
 
 ## ECHECK可以做什么
 
-echeck是一个做联通性检查的小工具，包括eping、escan、echeck等
+echeck是一个做联通性检查的小工具，包括eping、escan、ecurl、eshell等
 
 ## ECHECK的使用
 
@@ -53,7 +53,7 @@ server:
         logger_name: main
         logger_level: DEBUG
 #http协议检查
-echeck:
+ecurl:
     url:
         - https://www.baidu.com
         - https://cn.bing.com
@@ -83,25 +83,29 @@ escan:
             - 8080
             
 ```
-#### 2、echeck
+#### 2、ecurl
 * 配置
-echeck适用于检查服务器http/https地址的联通性，若同时需要检查的地址有https://www.baidu.com、https://cn.bing.com、http://www.pathcurve.cn，在配置文件中需要做如下配置：
+ecurl适用于检查服务器http/https地址的联通性，若同时需要检查的地址有https://www.baidu.com、https://cn.bing.com、http://www.pathcurve.cn，在配置文件中需要做如下配置：
 ```
-echeck:
+ecurl:
     url:
         - https://www.baidu.com
         - https://cn.bing.com
         - http://www.pathcurve.cn
 ```
+url可以配置多个地址，每个地址以"- "开头，标识为list结构
+
 * 执行
 ```
-$ echeck
+$ ecurl
 ```
 #### 3、eping
 * 配置
 eping适用于检查网络联通性，若同时需要检查的地址有127.0.0.1、172.20.78.115、172.20.79.255、google.cn、test.com，则在conf.yaml中需要增加如下配置：
 ```
 eping:
+    count: 4
+    timeout: 5
     ip:
         - 127.0.0.1
         - 172.20.78.115
@@ -109,6 +113,8 @@ eping:
         - google.cn
         - test.com
 ```
+count标识每个地址ping的次数，timeout是ping等待响应时长，以秒为单位
+
 * 执行
 ```
 $ eping

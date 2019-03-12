@@ -37,6 +37,8 @@ profile = "conf.yaml"
 props = Config(profile)  # 读取文件
 url_list = props.getURLS()
 ip_list = props.getIPList()
+ping_timeout = props.getPingTimeout()
+ping_count = props.getPingCount()
 host_list = props.getHostAndPort()
 eshell_cmds = props.getEShellCommands()
 indexFile = props.getIndexFile()
@@ -74,7 +76,7 @@ def check_url():
 
 def check_ip():
     for ip in ip_list:
-        verbose_ping(ip,logger=logger)
+        verbose_ping(ip,ping_count,timeout=ping_timeout,logger=logger)
 
 def scan_port():
     escan = EScan(host_list)
