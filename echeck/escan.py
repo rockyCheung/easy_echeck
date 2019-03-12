@@ -77,20 +77,29 @@ class EScan():
         """
 
         t1 = time.time()
-
+        open_port = []
         for port in host['port']:
+            scan_result = {}
+            try:
+                scan_result['port'] = port
+                client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                client.settimeout(0.05)
 
-            client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            client.settimeout(0.05)
-
-            sohost = socket.gethostbyname(host['ip'])
-
-            if client.connect_ex((sohost, port)) == 0:
-                client.close
-        t2 = time.time()
-        total_time = "\nScanned in {:.2f} seconds".format(t2 - t1)
-
-        return host['port'], sohost, total_time
+                sohost = socket.gethostbyname(host['ip'])
+                errno_value = client.connect_ex((sohost, port))
+                if errno_value == 0:
+                    scan_result['statue'] = 1
+                    client.close
+                else:
+                    scan_result['statue'] = 0
+                t2 = time.time()
+                total_time = "\nScanned in {:.2f} seconds".format(t2 - t1)
+            except Exception as e:
+                print('scan error:',e)
+                total_time = "\nScanned error {} ".format(e)
+                scan_result['statue'] = 0
+            open_port.append(scan_result)
+        return open_port, sohost, total_time
 
 
     def print_results(self, sohost, open_ports, logger):
@@ -108,7 +117,16 @@ class EScan():
 
         else:
             for port in open_ports:
-                logger.info("Port:{}\tService: {}\t Status:  OPEN".format(port,all_services()[port]))
+                service_name = ''
+                try:
+                    service_name = all_services()[port['port']]
+                except Exception as e:
+                    print('TypeError,the service: {} is undefined'.format(port['port']))
+
+                if port['statue'] == 1:
+                    logger.info("Port:{}\tService: {}\t Status:  OPEN".format(port['port'],service_name))
+                else:
+                    logger.info("Port:{}\tService: {}\t Status:  CLOSE".format(port['port'],service_name))
         logger.info('*************************************************/')
         logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')
 
@@ -118,3 +136,7 @@ class EScan():
         for hostInfo in self.hostList:
             open_ports,host,total_time = self.attempt_connections(hostInfo['host'])
             self.print_results(host, open_ports,logger)
+# if __name__ == "__main__":
+#     host = {'ip':'127.0.0.1','port':[8080,80,5900]}
+#     e = EScan(hostList = None)
+#     print(e.attempt_connections(host))
