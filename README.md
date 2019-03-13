@@ -126,7 +126,7 @@ count标识每个地址ping的次数，timeout是ping等待响应时长，以秒
 $ eping
 ```
 #### 4、escan
-*配置
+* 配置
 escan适用于扫描指定端口，端口可以是多个，具体配置示例如下：
 ```
 escan:
