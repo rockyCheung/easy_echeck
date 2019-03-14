@@ -1,14 +1,6 @@
 # -*- coding:utf-8 -*-
 from setuptools import setup, find_packages
-'''
-paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息
-1、CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
-2、CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
-  self.curve, Q_S_bytes
-3、CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
-  hm.add_string(self.Q_C.public_numbers().encode_point())
-建议将cryptography版本调整为2.4.2。
-'''
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
