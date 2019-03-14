@@ -5,7 +5,7 @@
 [![Apache License 2](https://img.shields.io/badge/license-ASF2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Build Status](https://travis-ci.org/rockyCheung/easy_echeck.svg?branch=master)](https://travis-ci.org/rockyCheung/easy_echeck)
 [![COVERALLS](https://coveralls.io/repos/github/rockyCheung/easy_echeck/badge.svg?branch=master)](https://coveralls.io/github/rockyCheung/easy_echeck)
-[![PyPI](https://secure.gravatar.com/avatar/24da30851a3c443b797850f5bc15e3f5)](https://pypi.org/project/echeck/)
+[![PyPI]()](https://pypi.org/project/echeck/)
 
 ## ECHECK可以做什么
 
