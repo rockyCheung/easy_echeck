@@ -1,4 +1,8 @@
+
 # ECHECK
+
+![Apache License 2](https://www.apache.org/licenses/LICENSE-2.0.txt)
+![Build Status](https://travis-ci.org/rockyCheung/easy_echeck.svg?branch=master)
 
 ## ECHECK可以做什么
 
