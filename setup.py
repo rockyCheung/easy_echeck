@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
+with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 
@@ -10,7 +10,8 @@ setup(
     version='1.0.2',
     description='简单易用的批量环境检查工具',
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
+    # long_description_content_type="text/markdown",
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
