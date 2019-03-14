@@ -9,10 +9,15 @@ paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃�
   hm.add_string(self.Q_C.public_numbers().encode_point())
 建议将cryptography版本调整为2.4.2。
 '''
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='echeck',
-    version='1.0.1',
-    description='本项目用于批量环境检查',
+    version='1.0.2',
+    description='简单易用的批量环境检查工具',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
