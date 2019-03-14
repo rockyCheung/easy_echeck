@@ -3,6 +3,7 @@
 
 ![Apache License 2](https://www.apache.org/licenses/LICENSE-2.0.txt)
 ![Build Status](https://travis-ci.org/rockyCheung/easy_echeck.svg?branch=master)
+![COVERALLS](https://coveralls.io/github/rockyCheung/easy_echeck)
 
 ## ECHECK可以做什么
 
