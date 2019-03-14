@@ -46,12 +46,25 @@ $ source venv/bin/activate
 ```
 
 #### 2、安装ECHECK
+
+* 源代码安装
+
+> 下载源代码
 ```
 $ git clone https://github.com/rockyCheung/easy_echeck.git
+```
+> 执行安装装指令
+```
 $ cd easy_echeck
 $ python setup.py install
 
 ```
+* 采用pip安装
+
+```
+$ pip install echeck
+```
+
 ### 如何使用
 #### 1、conf.yaml
 conf.yaml是核心的配置文件，下边是一个简单的示例
