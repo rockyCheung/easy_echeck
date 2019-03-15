@@ -5,9 +5,11 @@ python:
 # command to install dependencies
 install:
 #  - pip install -r requirement.rst
-#  - pip install python-gnutls
   - export PYCURL_SSL_LIBRARY=openssl
   - pip install pycurl
   - python setup.py install
 #virtualenv:
 #  system_site_packages: true
+# command to run tests
+script:
+  - echeck_test

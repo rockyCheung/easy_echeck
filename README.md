@@ -48,16 +48,16 @@ $ source venv/bin/activate
 
 #### 2、安装ECHECK
 
-* 源代码安装
-
 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
 
-> 安装pycurl
+* 安装pycurl
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 
 ```
+
+* 源代码安装
 
 > 下载源代码
 ```
