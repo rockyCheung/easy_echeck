@@ -2,18 +2,21 @@
 from setuptools import setup, find_packages
 import os
 
-with open("README.rst", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
-os.system('export PYCURL_SSL_LIBRARY=openssl')
+# with open('LICENSE') as fp:
+#     license = fp.read()
+
+# os.system('export PYCURL_SSL_LIBRARY=openssl')
 
 setup(
     name='echeck',
-    version='1.0.3',
+    version='1.0.4',
     description='简单易用的批量环境检查工具',
     long_description=long_description,
-    long_description_content_type="text/x-rst",
-    # long_description_content_type="text/markdown",
+    # long_description_content_type="text/x-rst",
+    long_description_content_type="text/markdown",
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
@@ -31,14 +34,14 @@ setup(
     url='https://github.com/rockyCheung/easy_echeck.git',
     author_email='274935730@qq.com',
     license='PSF',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=find_packages(exclude=['contrib', 'docs', 'test']),
     install_requires=['pycurl>=7.43.0.2','beautifulsoup4>=4.7.1','soupsieve>=1.8','wheel>=0.33.1','setuptools>=40.8.0',
                       'PyYAML>=3.13','nmap>=0.0.1','paramiko>=2.4.2','asn1crypto>=0.24.0','bcrypt>=3.1.6','cffi>=1.12.2',
                       'cryptography>=2.4.2','paramiko>=2.4.2','pyasn1>=0.4.5','pycparser>=2.19','pynacl>=1.3.0','six>=1.12.0',
                       'pytest>=4.3.1'],
     package_data={
         # If any package contains *.txt or *.rst files, include them:
-        '': ['*.txt', '*.rst','*.properties'],
+        '': ['*.txt', '*.rst','*.yaml','*.md'],
         # And include any *.msg files found in the 'hello' package, too:
         'tip': ['*.msg'],
     },
