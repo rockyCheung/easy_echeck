@@ -12,4 +12,4 @@ install:
 #  system_site_packages: true
 # command to run tests
 script:
-  - ecurl
+  - pytest
