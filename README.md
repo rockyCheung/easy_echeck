@@ -50,6 +50,15 @@ $ source venv/bin/activate
 
 * 源代码安装
 
+在安装ECHECK前，需要先安装pycurl>=7.43.0.2
+
+> 安装pycurl
+```
+$ export PYCURL_SSL_LIBRARY=openssl
+$ pip install pycurl
+
+```
+
 > 下载源代码
 ```
 $ git clone https://github.com/rockyCheung/easy_echeck.git
@@ -304,19 +313,26 @@ $ eshell
 ```
 ## 常见问题
 
-> paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息
+##### paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息
 
->> * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
->> * CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
+> * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
+> * CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
   self.curve, Q_S_bytes
->> * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
+> * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
   hm.add_string(self.Q_C.public_numbers().encode_point())
 建议将cryptography版本调整为2.4.2。
 
-> 安装过程报错
+##### 安装过程报错
 
->> Failed building wheel for pycurl
->>> 安装前先执行 ```$ export PYCURL_SSL_LIBRARY=openssl```
+> * Failed building wheel for pycurl
+
+> * 解决方法
+
+> 安装前先执行 
+```
+$ export PYCURL_SSL_LIBRARY=openssl
+$ pip install pycurl
+```
 
 [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 [pathcurve](http://www.pathcurve.cn)

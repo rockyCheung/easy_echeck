@@ -1,11 +1,13 @@
 dist: easy_check
 language: python
 python:
-  - "3.7-dev"  # 3.7 development branch
+  - "3.7.0"  # 3.7 development branch
 # command to install dependencies
 install:
-  - pip install -r requirement.rst
+#  - pip install -r requirement.rst
 #  - pip install python-gnutls
+  - export PYCURL_SSL_LIBRARY=openssl
+  - pip install pycurl
   - python setup.py install
 #virtualenv:
 #  system_site_packages: true
