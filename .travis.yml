@@ -5,7 +5,7 @@ python:
 # command to install dependencies
 install:
 #  - pip install -r requirement.rst
-  - export PYCURL_SSL_LIBRARY=ssl
+  - export PYCURL_SSL_LIBRARY=openssl
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl
   - python setup.py install
