@@ -15,3 +15,4 @@ pyasn1>=0.4.5
 pycparser>=2.19
 pynacl>=1.3.0
 six>=1.12.0
+python-gnutls>=3.1.2
