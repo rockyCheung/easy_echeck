@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from echeck.Curlclient import Curlclient
-
 
 class TestECurl():
     def test_ecurl(self):
+        from echeck.Curlclient import Curlclient
         url_list = ['https://www.baidu.com','http://www.pathcurve.cn']
         client = Curlclient(url_list, 'indexfile')
         res_list = client.docheck()
