@@ -313,5 +313,10 @@ $ eshell
   hm.add_string(self.Q_C.public_numbers().encode_point())
 建议将cryptography版本调整为2.4.2。
 
+> 安装过程报错
+
+>> Failed building wheel for pycurl
+>>> 安装前先执行 ```$ export PYCURL_SSL_LIBRARY=openssl```
+
 [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 [pathcurve](http://www.pathcurve.cn)
