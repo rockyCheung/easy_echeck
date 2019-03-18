@@ -31,7 +31,7 @@ except Exception as e:
 
 log_file = open("echeck_std.log", "a")
 sys.stdout = log_file
-profile = "conf.yaml"
+profile = "conf.yml"
 # if len(argv) > 1:
 #     profile = argv[1]
 props = Config(profile)  # 读取文件

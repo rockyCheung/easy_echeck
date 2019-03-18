@@ -46,7 +46,7 @@ class Config():
     def getEShellCommands(self):
         return self.eshell
 
-# conf = Config('/Users/zhangpenghong/Documents/workspace/easy_check/conf.yaml')
+# conf = Config('/Users/zhangpenghong/Documents/workspace/easy_check/conf.yml')
 # # urls = conf.getECHECK()
 # # print(conf.getURLS())
 # print(conf.getHostAndPort())
