@@ -104,4 +104,4 @@ venv/
 #writePoint.parquet
 echeck.log*
 #config
-conf.yaml
+conf.yml
