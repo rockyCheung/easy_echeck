@@ -76,8 +76,8 @@ $ pip install echeck
 ```
 
 ### 如何使用
-#### 1、conf.yaml
-conf.yaml是核心的配置文件，下边是一个简单的示例
+#### 1、conf.yml
+conf.yml是核心的配置文件，下边是一个简单的示例
 ```
 #yaml config
 #服务器的基础配置
