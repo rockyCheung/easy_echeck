@@ -1,4 +1,4 @@
-#yaml config
+#yaml config start
 #服务器的基础配置
 server:
     log:
