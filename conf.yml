@@ -40,7 +40,7 @@ escan:
             - 631
 eshell:
     - shell_cell:
-        ip: 127.0.0.1
+        ip: 47.0.0.1
         port: 23
         user_name: root
         password: 123456
