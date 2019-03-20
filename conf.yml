@@ -40,10 +40,10 @@ escan:
             - 631
 eshell:
     - shell_cell:
-        ip: 47.92.28.203
-        port: 22322
+        ip: 127.0.0.1
+        port: 23
         user_name: root
-        password: Roc7758521$
+        password: 123456
         exec_command:
 #             - docker rmi 8a8f0f7d6c16
 #             - docker images
