@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='echeck',
-    version='1.0.4',
+    version='2.0.0',
     description='简单易用的批量环境检查工具',
     long_description=long_description,
     # long_description_content_type="text/x-rst",
