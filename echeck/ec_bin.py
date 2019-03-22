@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from echeck.log.Logger import Logger
-import time,os
+import sys,os
 from echeck.conf.config import Config
 from echeck.Curlclient import Curlclient
 from echeck.eping import *
@@ -31,9 +31,14 @@ except Exception as e:
 
 log_file = open("echeck_std.log", "a")
 sys.stdout = log_file
+
+
 profile = "conf.yml"
-# if len(argv) > 1:
-#     profile = argv[1]
+
+if len(sys.argv) > 1:
+    profile = sys.argv[1]
+    print('the conf file is: %s ',profile)
+
 props = Config(profile)  # 读取文件
 url_list = props.getURLS()
 ip_list = props.getIPList()
@@ -47,6 +52,7 @@ loggerLevel = props.getLoggerLevel()
 logger_name = props.getLoggerName()
 log = Logger(logFile)
 logger = log.getLogger(logger_name, loggerLevel)
+
 
 def check_url():
     startTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
