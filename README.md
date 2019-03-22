@@ -132,8 +132,10 @@ ecurl:
 
 * 执行
 ```
-$ ecurl
+$ ecurl [配置文件]
 ```
+> 指令后的配置文件为可选参数，如果不带参数，则默认为当前路径下的conf.yml文件，其他指令与此同～
+
 <h4 id="3"> 3. eping </h4>
 
 * 配置
@@ -155,7 +157,7 @@ eping:
 
 * 执行
 ```
-$ eping
+$ eping  [配置文件]
 ```
 <h4 id="4"> 4. escan </h4>
 
@@ -178,7 +180,7 @@ escan:
 ```
 * 执行
 ```
-$ escan
+$ escan  [配置文件]
 ```
 
 <h4 id="5"> 5. eshell </h4>
@@ -239,7 +241,7 @@ eshell:
 
 * 执行
 ```
-$ eshell
+$ eshell  [配置文件]
 ```
 > 执行过程中可能会有警告信息CryptographyDeprecationWarning，这是因为paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，不影响使用，若觉得碍眼可以将cryptography版本调整为2.4.2。
 
