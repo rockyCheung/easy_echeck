@@ -18,11 +18,11 @@
 
 ### 安装
 
-ECHECK基于Python3.7开发，安装工具前需要先安装python3
+> ECHECK基于Python3.7开发，安装工具前需要先安装python3
 
 #### 1. 安装Python3
 
-工具的开发基于Python3.7版本，未做过兼容性测试，使用时尽量安装3.7版本
+> 工具的开发基于Python3.7版本，未做过兼容性测试，使用时尽量安装3.7版本
 * python3下载
 
 > [Python下载地址](https://www.python.org)
@@ -47,7 +47,7 @@ $ source venv/bin/activate
 
 #### 5. 安装ECHECK
 
-在安装ECHECK前，需要先安装pycurl>=7.43.0.2
+> 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
 
 * 安装pycurl
 ```
@@ -76,7 +76,7 @@ $ pip install echeck
 
 ### 如何使用
 #### 1. 配置文件conf.yml
-conf.yml是核心的配置文件，下边是一个简单的示例
+> conf.yml是核心的配置文件，下边是一个简单的示例
 ```
 #yaml config
 #服务器的基础配置
@@ -118,7 +118,9 @@ escan:
 ```
 <h4 id="2">2. ecurl </h4>
 * 配置
-ecurl适用于检查服务器http/https地址的联通性，若同时需要检查的地址有https://www.baidu.com、https://cn.bing.com、http://www.pathcurve.cn，在配置文件中需要做如下配置：
+
+> ecurl适用于检查服务器http/https地址的联通性，若同时需要检查的地址有https://www.baidu.com、https://cn.bing.com、http://www.pathcurve.cn，在配置文件中需要做如下配置：
+
 ```
 ecurl:
     url:
@@ -126,7 +128,7 @@ ecurl:
         - https://cn.bing.com
         - http://www.pathcurve.cn
 ```
-url可以配置多个地址，每个地址以"- "开头，标识为list结构
+> url可以配置多个地址，每个地址以"- "开头，标识为list结构
 
 * 执行
 ```
@@ -135,7 +137,9 @@ $ ecurl
 <h4 id="3"> 3. eping </h4>
 
 * 配置
-eping适用于检查网络联通性，若同时需要检查的地址有127.0.0.1、172.20.78.115、172.20.79.255、google.cn、test.com，则在conf.yaml中需要增加如下配置：
+
+> eping适用于检查网络联通性，若同时需要检查的地址有127.0.0.1、172.20.78.115、172.20.79.255、google.cn、test.com，则在conf.yaml中需要增加如下配置：
+
 ```
 eping:
     count: 4
@@ -147,7 +151,7 @@ eping:
         - google.cn
         - test.com
 ```
-count标识每个地址ping的次数，timeout是ping等待响应时长，以秒为单位
+> count标识每个地址ping的次数，timeout是ping等待响应时长，以秒为单位
 
 * 执行
 ```
@@ -156,7 +160,9 @@ $ eping
 <h4 id="4"> 4. escan </h4>
 
 * 配置
-escan适用于扫描指定端口，端口可以是多个，具体配置示例如下：
+
+> escan适用于扫描指定端口，端口可以是多个，具体配置示例如下：
+
 ```
 escan:
     - host:
@@ -179,7 +185,8 @@ $ escan
 
 * 配置
 
-eshell适合于远程执行脚本，以远程执行删除镜像为例，具体配置示例如下：
+> eshell适合于远程执行脚本，以远程执行删除镜像为例，具体配置示例如下：
+
 ```
 eshell:
     - shell_cell:
@@ -191,19 +198,21 @@ eshell:
              - docker rmi 9b0c10cae863
              - docker images
 ```
-exec_command配置项包括两个指令
+
+> __exec_command配置项包括两个指令__
+
 > docker rmi 9b0c10cae863 删除ID：9b0c10cae863的镜像
 
 > docker images 查询本机所有镜像
 
-eshell支持任何远程服务器指令，如果想查看服务器硬盘使用情况、系统资源限制，常规做法是先远程登陆服务器，然后，执行如下两个指令：
+> eshell支持任何远程服务器指令，如果想查看服务器硬盘使用情况、系统资源限制，常规做法是先远程登陆服务器，然后，执行如下两个指令：
 
 > df -h
 
 > ulimit -a
 
-但如果需要同时查看10台服务器情况，那就会略显烦躁，如果是50台、100台呢？就这样被自己傻哭了，趴在电脑前认认真真敲三天指令，第四天发现前边90台的资源使用情况都忘记了～
-现在有了eshell，一切变简单了，下边以在多台服务器同时执行 df -h、ulimit -a、ls /opt指令为例：
+> 但如果需要同时查看10台服务器情况，那就会略显烦躁，如果是50台、100台呢？就这样被自己傻哭了，趴在电脑前认认真真敲三天指令，第四天发现前边90台的资源使用情况都忘记了～
+> 现在有了eshell，一切变简单了，下边以在多台服务器同时执行 df -h、ulimit -a、ls /opt指令为例：
 
 
 > df、ulimit、ls三个指令为例：
@@ -233,9 +242,9 @@ eshell:
 ```
 $ eshell
 ```
-执行过程中可能会有警告信息CryptographyDeprecationWarning，这是因为paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，不影响使用，若觉得碍眼可以将cryptography版本调整为2.4.2。
+> 执行过程中可能会有警告信息CryptographyDeprecationWarning，这是因为paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，不影响使用，若觉得碍眼可以将cryptography版本调整为2.4.2。
 
-执行完成后echeck.log打印日志如下：
+> 执行完成后echeck.log打印日志如下：
 
 ```
  /~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -316,7 +325,7 @@ $ eshell
 
 ### 运行时警告
 
-__paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息__
+> __paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息__
 
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
 > * CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
@@ -329,7 +338,7 @@ __paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃
 
 > * Failed building wheel for pycurl
 
- __解决方法安装前先执行__
+> __解决方法安装前先执行__
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
