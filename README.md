@@ -199,20 +199,19 @@ eshell:
              - docker images
 ```
 
-> __exec_command配置项包括两个指令__
+> __exec_command配置项包括两个指令:__
 
 > docker rmi 9b0c10cae863 删除ID：9b0c10cae863的镜像
 
 > docker images 查询本机所有镜像
 
-> eshell支持任何远程服务器指令，如果想查看服务器硬盘使用情况、系统资源限制，常规做法是先远程登陆服务器，然后，执行如下两个指令：
+> __eshell支持任何远程服务器指令，如果想查看服务器硬盘使用情况、系统资源限制，常规做法是先远程登陆服务器，然后，执行如下两个指令：__
 
 > df -h
 
 > ulimit -a
 
-> 但如果需要同时查看10台服务器情况，那就会略显烦躁，如果是50台、100台呢？就这样被自己傻哭了，趴在电脑前认认真真敲三天指令，第四天发现前边90台的资源使用情况都忘记了～
-> 现在有了eshell，一切变简单了，下边以在多台服务器同时执行 df -h、ulimit -a、ls /opt指令为例：
+> __但如果需要同时查看10台服务器情况，那就会略显烦躁，如果是50台、100台呢？就这样被自己傻哭了，趴在电脑前认认真真敲三天指令，第四天发现前边90台的资源使用情况都忘记了～现在有了eshell，一切变简单了，下边以在多台服务器同时执行 df -h、ulimit -a、ls /opt指令为例：__
 
 
 > df、ulimit、ls三个指令为例：
@@ -325,20 +324,21 @@ $ eshell
 
 ### 运行时警告
 
-> __paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息__
+> __paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息:__
 
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
 > * CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
   self.curve, Q_S_bytes
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
   hm.add_string(self.Q_C.public_numbers().encode_point())
-建议将cryptography版本调整为2.4.2。
+  
+> **建议将cryptography版本调整为2.4.2。**
 
 ### 安装过程报错
 
 > * Failed building wheel for pycurl
 
-> __解决方法安装前先执行__
+> __解决方法安装前先执行:__
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
