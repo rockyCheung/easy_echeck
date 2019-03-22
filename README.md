@@ -9,10 +9,10 @@
 ## ECHECK可以做什么
 
 * echeck是一个基于Python语言开发的脚本工具，主要包括eping、escan、ecurl、eshell四个核心指令
-* eping可以同时ping多个服务地址，并输出结果
-* ecurl与curl指令相同，可以同时尝试访问多个地址，并输出结果
-* escan为端口嗅探工具，最终返回端口嗅探结果
-* eshell可以远程执行指令
+* [ecurl](#2)与curl指令相同，可以同时尝试访问多个地址，并输出结果
+* [eping](#3)可以同时ping多个服务地址，并输出结果
+* [escan](#4)为端口嗅探工具，最终返回端口嗅探结果
+* [eshell](#5)可以远程执行指令
 
 ## ECHECK的使用
 
@@ -20,9 +20,8 @@
 
 ECHECK基于Python3.7开发，安装工具前需要先安装python3
 
-#### 1、安装Python3
+#### 1. 安装Python3
 
-##### python3安装
 工具的开发基于Python3.7版本，未做过兼容性测试，使用时尽量安装3.7版本
 * python3下载
 
@@ -30,23 +29,23 @@ ECHECK基于Python3.7开发，安装工具前需要先安装python3
 
 * 选择对应版本进行安装即可
 
-##### 安装virtualenv
+#### 2. 安装virtualenv
 
 > 建议使用virtualenv，以简化外部环境对工具安装带来的影响,如果是linux或mac，可采用如下命令进行安装
 ```
 $ pip install virtualenv
 ```
 > 可执行help查看virtualenv使用指令
-##### 创建虚拟环境
+#### 3. 创建虚拟环境
 ```
 $ virtualenv -p '指定python安装路径' venv
 ```
-##### 激活虚拟环境
+#### 4. 激活虚拟环境
 ```
 $ source venv/bin/activate
 ```
 
-#### 2、安装ECHECK
+#### 5. 安装ECHECK
 
 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
 
@@ -76,7 +75,7 @@ $ pip install echeck
 ```
 
 ### 如何使用
-#### 1、conf.yml
+#### 1. 配置文件conf.yml
 conf.yml是核心的配置文件，下边是一个简单的示例
 ```
 #yaml config
@@ -117,7 +116,7 @@ escan:
             - 8080
             
 ```
-#### 2、ecurl
+<h4 id="2">2. ecurl </h4>
 * 配置
 ecurl适用于检查服务器http/https地址的联通性，若同时需要检查的地址有https://www.baidu.com、https://cn.bing.com、http://www.pathcurve.cn，在配置文件中需要做如下配置：
 ```
@@ -133,7 +132,8 @@ url可以配置多个地址，每个地址以"- "开头，标识为list结构
 ```
 $ ecurl
 ```
-#### 3、eping
+<h4 id="3"> 3. eping </h4>
+
 * 配置
 eping适用于检查网络联通性，若同时需要检查的地址有127.0.0.1、172.20.78.115、172.20.79.255、google.cn、test.com，则在conf.yaml中需要增加如下配置：
 ```
@@ -153,7 +153,8 @@ count标识每个地址ping的次数，timeout是ping等待响应时长，以秒
 ```
 $ eping
 ```
-#### 4、escan
+<h4 id="4"> 4. escan </h4>
+
 * 配置
 escan适用于扫描指定端口，端口可以是多个，具体配置示例如下：
 ```
@@ -174,7 +175,7 @@ escan:
 $ escan
 ```
 
-#### 5、eshell
+<h4 id="5"> 5. eshell </h4>
 
 * 配置
 
@@ -313,7 +314,9 @@ $ eshell
 ```
 ## 常见问题
 
-##### paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息
+### 运行时警告
+
+__paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息__
 
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
 > * CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
@@ -322,13 +325,11 @@ $ eshell
   hm.add_string(self.Q_C.public_numbers().encode_point())
 建议将cryptography版本调整为2.4.2。
 
-##### 安装过程报错
+### 安装过程报错
 
 > * Failed building wheel for pycurl
 
-> * 解决方法
-
-> 安装前先执行 
+ __解决方法安装前先执行__
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
