@@ -27,7 +27,7 @@ install:
   - export PYCURL_SSL_LIBRARY=openssl
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl
-  - python setup.py install
+  - python setup.py --with-openssl install
 #virtualenv:
 #  system_site_packages: true
 # command to run tests
