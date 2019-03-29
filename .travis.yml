@@ -5,7 +5,12 @@ python:
 # command to install dependencies
 install:
 #  - pip install -r requirement.rst
-  - brew install openssl
+#  - brew install openssl
+  - curl -sSf -o https://www.openssl.org/source/openssl-1.0.2r.tar.gz
+  - sudo tar xjf openssl-1.0.2r.tar.gz
+  - cd openssl-1.0.2r/
+  - ./config --prefix=/usr/local/opt --openssldir=/usr/local/opt/openssl
+  - make && make install
   - echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
   - source ~/.bash_profile
   - export LDFLAGS="-L/usr/local/opt/openssl/lib"
