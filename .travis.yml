@@ -5,6 +5,12 @@ python:
 # command to install dependencies
 install:
 #  - pip install -r requirement.rst
+  - brew install openssl
+  - echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+  - source ~/.bash_profile
+  - export LDFLAGS="-L/usr/local/opt/openssl/lib"
+  - export CPPFLAGS="-I/usr/local/opt/openssl/include"
+  - export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
   - export PYCURL_SSL_LIBRARY=openssl
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl

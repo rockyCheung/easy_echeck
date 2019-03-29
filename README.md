@@ -227,6 +227,7 @@ eshell:
 ```
 eshell:
     - shell_cell:
+        label: host_name1
         ip: 24.110.255.11
         port: 22
         user_name: root
@@ -236,6 +237,7 @@ eshell:
              - ulimit -a
              - ls /opt
     - shell_cell:
+        label: host_name2
         ip: 24.110.255.12
         port: 22
         user_name: root
@@ -345,7 +347,11 @@ $ eshell  [配置文件]
 
 ### 安装过程报错
 
-> * Failed building wheel for pycurl
+> * 安装echeck报错
+
+```markdown
+Failed building wheel for pycurl
+```
 
 > __解决方法安装前先执行:__
 ```
