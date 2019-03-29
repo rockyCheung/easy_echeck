@@ -3,8 +3,8 @@ language: python
 python:
   - "3.7.0"  # 3.7 development branch
 # command to install dependencies
-before_install:
-  - sudo apt-get install -y openssl
+#before_install:
+#  - sudo apt-get install -y openssl
 install:
 #  - pip install -r requirement.rst
 #  - brew install openssl
@@ -22,8 +22,9 @@ install:
 #  - export LDFLAGS="-L/usr/local/openssl/lib"
 #  - export CPPFLAGS="-I/usr/local/openssl/include"
 #  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
+  - sudo apt-get install -y openssl
   - openssl version
-  - export PYCURL_SSL_LIBRARY=ssl
+  - export PYCURL_SSL_LIBRARY=openssl
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl
   - python setup.py install
