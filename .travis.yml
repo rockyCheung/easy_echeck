@@ -25,13 +25,14 @@ install:
   - sudo apt-get install -y openssl
   - openssl version
   - whereis openssl
-  - export PYCURL_SSL_LIBRARY=openssl
-  - export PYCURL_CURL_CONFIG=/usr/bin/curl-config
-  - cat /usr/local/bin/curl-config
-  - export LDFLAGS=/usr/include/openssl/lib
-  - export CPPFLAGS=/usr/include/openssl/include
+#  - export PYCURL_SSL_LIBRARY=openssl
+#  - export PYCURL_CURL_CONFIG=/usr/bin/curl-config
+#  - export LDFLAGS=/usr/include/openssl/lib
+#  - export CPPFLAGS=/usr/include/openssl/include
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
-  - pip install pycurl
+  - git clone https://github.com/pycurl/pycurl.git
+  - python pycurl/setup.py --with-openssl install
+#  - pip install pycurl
   - python setup.py install
 #virtualenv:
 #  system_site_packages: true
