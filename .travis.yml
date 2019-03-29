@@ -6,7 +6,7 @@ python:
 install:
 #  - pip install -r requirement.rst
 #  - brew install openssl
-  - curl -sSf -o https://www.openssl.org/source/openssl-1.0.2r.tar.gz
+  - curl -sSf -o openssl-1.0.2r.tar.gz https://www.openssl.org/source/openssl-1.0.2r.tar.gz
   - sudo tar xjf openssl-1.0.2r.tar.gz
   - cd openssl-1.0.2r/
   - ./config --prefix=/usr/local/opt --openssldir=/usr/local/opt/openssl
