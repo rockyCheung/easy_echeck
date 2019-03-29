@@ -25,6 +25,7 @@ install:
   - sudo apt-get install -y openssl
   - openssl version
   - whereis openssl
+  - which openssl
   - export PYCURL_SSL_LIBRARY=openssl
   - export LDFLAGS=-L/usr/local/opt/openssl/lib
   - export CPPFLAGS=-I/usr/local/opt/openssl/include
