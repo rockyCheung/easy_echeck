@@ -9,13 +9,13 @@ install:
   - curl -sSf -o openssl-1.0.2r.tar.gz https://www.openssl.org/source/openssl-1.0.2r.tar.gz
   - sudo tar xvf openssl-1.0.2r.tar.gz
   - cd openssl-1.0.2r/
-  - ./config --prefix=/usr/local/opt --openssldir=/usr/local/opt/openssl
+  - ./config --prefix=/usr/local --openssldir=/usr/local/openssl
   - make && make install
-  - echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+  - echo 'export PATH="/usr/local/openssl/bin:$PATH"' >> ~/.bash_profile
   - source ~/.bash_profile
-  - export LDFLAGS="-L/usr/local/opt/openssl/lib"
-  - export CPPFLAGS="-I/usr/local/opt/openssl/include"
-  - export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+  - export LDFLAGS="-L/usr/local/openssl/lib"
+  - export CPPFLAGS="-I/usr/local/openssl/include"
+  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
   - export PYCURL_SSL_LIBRARY=openssl
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl
