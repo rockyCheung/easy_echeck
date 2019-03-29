@@ -22,7 +22,8 @@ install:
 #  - export LDFLAGS="-L/usr/local/openssl/lib"
 #  - export CPPFLAGS="-I/usr/local/openssl/include"
 #  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
-  - export PYCURL_SSL_LIBRARY=openssl
+  - openssl version
+  - export PYCURL_SSL_LIBRARY=ssl
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl
   - python setup.py install
