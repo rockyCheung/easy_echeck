@@ -28,9 +28,9 @@ install:
   - export PYCURL_SSL_LIBRARY="openssl"
   - sudo find / -name "pkgconfig"
   - export PYCURL_CURL_CONFIG="/usr/bin/curl-config"
-  - export LDFLAGS="/usr/lib"
-  - export CPPFLAGS="/usr/include"
-  - export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
+#  - export LDFLAGS="/usr/lib"
+#  - export CPPFLAGS="/usr/include"
+#  - export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
   - pip install pycurl
   - python setup.py install
 #virtualenv:
