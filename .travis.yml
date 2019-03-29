@@ -24,10 +24,13 @@ install:
 #  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
   - sudo apt-get install -y openssl
   - openssl version
+  - whereis openssl
   - export PYCURL_SSL_LIBRARY=openssl
+  - export LDFLAGS=-L/usr/local/opt/openssl/lib
+  - export CPPFLAGS=-I/usr/local/opt/openssl/include
 #  - export PYCURL_SSL_LIBRARY=[openssl|gnutls|nss|ssl]
   - pip install pycurl
-  - python setup.py --with-ssl install
+  - python setup.py install
 #virtualenv:
 #  system_site_packages: true
 # command to run tests
