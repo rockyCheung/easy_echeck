@@ -10,9 +10,9 @@ install:
   - sudo tar xvf openssl-1.0.2r.tar.gz
   - sudo chmod -R 777 openssl-1.0.2r/
   - cd openssl-1.0.2r/
-#  - ./config --prefix=/usr/local --openssldir=/usr/local/openssl
-  - ./config
-  - make && make install
+  - ./config --prefix=/usr/local --openssldir=/usr/local/openssl
+#  - ./config
+  - sudo make && make install
   - echo 'export PATH="/usr/local/openssl/bin:$PATH"' >> ~/.bash_profile
   - source ~/.bash_profile
   - export LDFLAGS="-L/usr/local/openssl/lib"
