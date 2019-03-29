@@ -26,7 +26,8 @@ install:
   - openssl version
   - whereis openssl
   - export PYCURL_SSL_LIBRARY=openssl
-  - sudo find / -name "curl-config"
+  - sudo find / -name "openssl"
+  - sudo find / -name "pkgconfig"
   - export PYCURL_CURL_CONFIG=/usr/bin/curl-config
   - export LDFLAGS=/usr/include/openssl/lib
   - export CPPFLAGS=/usr/include/openssl/include
