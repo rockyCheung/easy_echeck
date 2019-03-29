@@ -102,7 +102,7 @@ class EScan():
         return open_port, sohost, total_time
 
 
-    def print_results(self, sohost, open_ports, logger):
+    def print_results(self, sohost,label, open_ports, logger):
         """Prints the results the results based on the open ports
         :param sohost: the connection target sohost
         :param open_ports: a list containing the open ports(ports must be int)
@@ -110,6 +110,7 @@ class EScan():
         logger.info('/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         logger.info('/*************************************************')
         logger.info("Address: {}".format(sohost))
+        logger.info("Label: {}".format(label))
         logger.info("Host: {0} \t {1}".format(sohost, socket.gethostbyname(sohost)[0]))
 
         if len(open_ports) == 0:
@@ -133,10 +134,12 @@ class EScan():
     def loopSacn(self,**kwargs):
         start_system()
         logger = kwargs.get("logger")
+        #logger.info(self.hostList)
         for hostInfo in self.hostList:
             open_ports,host,total_time = self.attempt_connections(hostInfo['host'])
-            self.print_results(host, open_ports,logger)
+            #logger.info(hostInfo)
+            self.print_results(host,hostInfo['host']['label'], open_ports,logger)
 # if __name__ == "__main__":
-#     host = {'ip':'127.0.0.1','port':[8080,80,5900]}
+#     host = {'ip':'127.0.0.1','label':'host','port':[8080,80,5900]}
 #     e = EScan(hostList = None)
 #     print(e.attempt_connections(host))

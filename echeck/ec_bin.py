@@ -91,7 +91,7 @@ def scan_port():
 def exec_comand():
     for shell_box in eshell_cmds:
         shell_cell = shell_box['shell_cell']
-        eshell = EShell(shell_cell['ip'],shell_cell['port'],shell_cell['user_name'],shell_cell['password'])
+        eshell = EShell(shell_cell['ip'],shell_cell['label'],shell_cell['port'],shell_cell['user_name'],shell_cell['password'])
         eshell.exec_commands(shell_cell['exec_command'],logger=logger)
 # if __name__ == '__main__':
 #     scan_port()

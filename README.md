@@ -50,6 +50,8 @@ $ source venv/bin/activate
 > 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
 
 * 安装pycurl
+
+__在安装pycurl前要确保已经安装了openssl，对于如何安装openssl，将在"常见问题"章节中进行详细说明__
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
@@ -105,11 +107,13 @@ eping:
         - test.com
 escan:
     - host:
+        label: host_name1
         ip: 127.0.0.1
         port:
             - 80
             - 8080
     - host:
+        label: host_name2
         ip: 172.20.78.115
         port:
             - 80
@@ -168,11 +172,13 @@ $ eping  [配置文件]
 ```
 escan:
     - host:
+        label: host_name1
         ip: 127.0.0.1
         port:
             - 80
             - 8080
     - host:
+        label: host_name2
         ip: 172.20.78.115
         port:
             - 80
@@ -192,6 +198,7 @@ $ escan  [配置文件]
 ```
 eshell:
     - shell_cell:
+        label: host_name1
         ip: 24.110.255.11
         port: 22
         user_name: root
@@ -345,6 +352,45 @@ $ eshell  [配置文件]
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 ```
+> * 安装pycurl时报找不到openssl/ssl.h的错误
+```
+
+src/pycurl.h:164:13: fatal error: 'openssl/ssl.h' file not found
+    #   include <openssl/ssl.h>
+                ^~~~~~~~~~~~~~~
+    1 error generated.
+    error: command 'gcc' failed with exit status 1
+    
+    ----------------------------------------
+
+```
+> 解决办法安装openssl
+
+__在mac下执行如下指令__
+```
+$ brew install openssl
+```
+__因为考虑到用户可能会使用TLS，brew在安装openssl时不会设置为默认首选模块，所以为了在使用或编译时可以找到openssl，需要做如下设置__
+
+```markdown
+$ echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+$ source ~/.bash_profile
+$ export LDFLAGS="-L/usr/local/opt/openssl/lib"
+$ export CPPFLAGS="-I/usr/local/opt/openssl/include"
+$ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
+```
+__然后在执行pycurl的安装指令__
+```markdown
+$ export PYCURL_SSL_LIBRARY=openssl
+$ pip install pycurl
+```
+## 版本说明
+
+* 2.0.2版本
+> 1. 为了方便标识设备，增强设备的辨识性，在eshell、escan指令中增加了label设置，用户可以根据实际需求用户个性化的标签标识设备
+> 2. 在这个版本中同时补充了使用说明以及常见错误的处理方法
+
 
 [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 [pathcurve](http://www.pathcurve.cn)

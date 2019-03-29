@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='echeck',
-    version='2.0.1',
+    version='2.0.2',
     description='简单易用的批量环境检查工具',
     long_description=long_description,
     # long_description_content_type="text/x-rst",
@@ -41,7 +41,7 @@ setup(
                       'pytest>=4.3.1'],
     package_data={
         # If any package contains *.txt or *.rst files, include them:
-        '': ['*.txt', '*.rst','*.yaml','*.md'],
+        '': ['*.txt', '*.rst','tmplate_conf.yml','*.md'],
         # And include any *.msg files found in the 'hello' package, too:
         'tip': ['*.msg'],
     },
