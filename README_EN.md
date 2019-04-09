@@ -6,79 +6,79 @@
 [![COVERALLS](https://coveralls.io/repos/github/rockyCheung/easy_echeck/badge.svg?branch=master)](https://coveralls.io/github/rockyCheung/easy_echeck)
 [![PyPI](https://pypi.org/static/images/logo-small.6eef541e.svg)](https://pypi.org/project/echeck/)
 
-## ECHECK可以做什么
+## What can ECHECK do?
 
-* echeck是一个基于Python语言开发的脚本工具，主要包括eping、escan、ecurl、eshell四个核心指令
-* [ecurl](#2)与curl指令相同，可以同时尝试访问多个地址，并输出结果
-* [eping](#3)可以同时ping多个服务地址，并输出结果
-* [escan](#4)为端口嗅探工具，最终返回端口嗅探结果
-* [eshell](#5)可以远程执行指令
+* Echeck is a scripting tool developed based on the Python language. It mainly includes four core commands: eping, escan, ecurl, and eshell.
+* [ecurl](#2) is the same as curl instructions, it can try to access multiple addresses at the same time and output results
+* [eping](#3) can ping multiple service addresses at the same time and output results
+* [escan](#4) is a port sniffing tool, and ultimately returns the result of port sniffing
+* [eshell](#5) instructions can be executed remotely
 
-## ECHECK的使用
+## Use of ECHECK
 
-### 安装
+### Installation
 
-> ECHECK基于Python3.7开发，安装工具前需要先安装python3
+> ECHECK is based on Python 3.7. You need to install python3 before installing the tool.
 
-#### 1. 安装Python3
+#### 1. Install Python3
 
-> 工具的开发基于Python3.7版本，未做过兼容性测试，使用时尽量安装3.7版本
-* python3下载
+> The development of the tool is based on Python version 3.7. It has not been tested for compatibility. Try to install version 3.7 when using it.
+* Python3 download
 
-> [Python下载地址](https://www.python.org)
+> [Python download address](https://www.python.org)
 
-* 选择对应版本进行安装即可
+* Select the corresponding version to install
 
-#### 2. 安装virtualenv
+#### 2. Install virtualenv
 
-> 建议使用virtualenv，以简化外部环境对工具安装带来的影响,如果是linux或mac，可采用如下命令进行安装
+> It is recommended to use virtualenv to simplify the impact of the external environment on the tool installation. If it is linux or mac, you can use the following command to install it.
 ```
 $ pip install virtualenv
 ```
-> 可执行help查看virtualenv使用指令
-#### 3. 创建虚拟环境
+> Executable help to view the virtualenv use instructions
+#### 3. Create a virtual environment
 ```
-$ virtualenv -p '指定python安装路径' venv
+$ virtualenv -p 'specify python installation path' venv
 ```
-#### 4. 激活虚拟环境
+#### 4. Activate the virtual environment
 ```
 $ source venv/bin/activate
 ```
 
-#### 5. 安装ECHECK
+#### 5. Install ECHECK
 
-> 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
+> Before installing ECHECK, you need to install pycurl&gt;=7.43.0.2
 
-* 安装pycurl
+* Install pycurl
 
-__在安装pycurl前要确保已经安装了openssl，对于如何安装openssl，将在"常见问题"章节中进行详细说明__
+__Make sure that openssl is installed before installing pycurl. For how to install openssl, it will be explained in the "Frequently Asked Questions" section.__
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 
 ```
 
-* 源代码安装
+* Source code installation
 
-> 下载源代码
+> Download source code
 ```
 $ git clone https://github.com/rockyCheung/easy_echeck.git
 ```
-> 执行安装装指令
+> Execute the installation instructions
 ```
 $ cd easy_echeck
 $ python setup.py install
 
 ```
-* 采用pip安装
+* Installed with pip
 
 ```
 $ pip install echeck
 ```
 
-### 如何使用
-#### 1. 配置文件conf.yml
-> conf.yml是核心的配置文件，下边是一个简单的示例
+### How to use
+#### 1. Profile conf.yml
+> Conf.yml is the core configuration file, below is a simple example
 ```
 #yaml config
 #服务器的基础配置
@@ -121,9 +121,9 @@ escan:
             
 ```
 <h4 id="2">2. ecurl </h4>
-* 配置
+* Profile
 
-> ecurl适用于检查服务器http/https地址的联通性，若同时需要检查的地址有https://www.baidu.com、https://cn.bing.com、http://www.pathcurve.cn，在配置文件中需要做如下配置：
+> Ecurl is used to check the connectivity of the http/https address of the server. If the address to be checked at the same time is https://www.baidu.com, https://cn.bing.com, http://www.pathcurve.cn, The following configuration is required in the configuration file:
 
 ```
 ecurl:
@@ -132,19 +132,19 @@ ecurl:
         - https://cn.bing.com
         - http://www.pathcurve.cn
 ```
-> url可以配置多个地址，每个地址以"- "开头，标识为list结构
+> The url can be configured with multiple addresses, each of which starts with a "-" and is identified as a list structure.
 
-* 执行
+* Carried out
 ```
-$ ecurl [配置文件]
+$ ecurl [profile]
 ```
-> 指令后的配置文件为可选参数，如果不带参数，则默认为当前路径下的conf.yml文件，其他指令与此同～
+> The configuration file after the command is an optional parameter. If there is no parameter, the default is the conf.yml file in the current path. Other commands are the same as ～
 
 <h4 id="3"> 3. eping </h4>
 
-* 配置
+* Profile
 
-> eping适用于检查网络联通性，若同时需要检查的地址有127.0.0.1、172.20.78.115、172.20.79.255、google.cn、test.com，则在conf.yaml中需要增加如下配置：
+> Eping is suitable for checking network connectivity. If the addresses to be checked at the same time are 127.0.0.1, 172.20.78.115, 172.20.179.255, google.cn, test.com, you need to add the following configuration in conf.yaml:
 
 ```
 eping:
@@ -157,17 +157,17 @@ eping:
         - google.cn
         - test.com
 ```
-> count标识每个地址ping的次数，timeout是ping等待响应时长，以秒为单位
+> Count identifies the number of pings per address, and timeout is the length of time that ping waits for response, in seconds.
 
-* 执行
+* Carried out
 ```
-$ eping  [配置文件]
+$ eping  [profile]
 ```
 <h4 id="4"> 4. escan </h4>
 
-* 配置
+* Profile
 
-> escan适用于扫描指定端口，端口可以是多个，具体配置示例如下：
+> The escan is applicable to scanning a specified port. The port can be multiple. The configuration examples are as follows:
 
 ```
 escan:
@@ -184,16 +184,16 @@ escan:
             - 80
             - 8080
 ```
-* 执行
+* Carried out
 ```
-$ escan  [配置文件]
+$ escan  [profile]
 ```
 
 <h4 id="5"> 5. eshell </h4>
 
-* 配置
+* Profile
 
-> eshell适合于远程执行脚本，以远程执行删除镜像为例，具体配置示例如下：
+> The eshell is suitable for remote execution of a script. The remote configuration is performed as an example. The specific configuration examples are as follows:
 
 ```
 eshell:
@@ -208,22 +208,22 @@ eshell:
              - docker images
 ```
 
-> __exec_command配置项包括两个指令:__
+> __The exec_command configuration item consists of two instructions:__
 
-> docker rmi 9b0c10cae863 删除ID：9b0c10cae863的镜像
+> Docker rmi 9b0c10cae863 Delete ID: Image of 9b0c10cae863
 
-> docker images 查询本机所有镜像
+> Docker images Query all images of this machine
 
-> __eshell支持任何远程服务器指令，如果想查看服务器硬盘使用情况、系统资源限制，常规做法是先远程登陆服务器，然后，执行如下两个指令：__
+> __Eshell supports any remote server command. If you want to check the server hard disk usage and system resource limit, the general procedure is to log in to the server remotely, and then execute the following two commands:__
 
 > df -h
 
 > ulimit -a
 
-> __但如果需要同时查看10台服务器情况，那就会略显烦躁，如果是50台、100台呢？就这样被自己傻哭了，趴在电脑前认认真真敲三天指令，第四天发现前边90台的资源使用情况都忘记了～现在有了eshell，一切变简单了，下边以在多台服务器同时执行 df -h、ulimit -a、ls /opt指令为例：__
+> __But if you need to view 10 servers at the same time, it will be slightly annoying. If it is 50 or 100? In this way, I was so stunned by myself, squatting in front of the computer and seriously knocking on the instructions for three days. On the fourth day, I found that the resources of the 90 units in the front were forgotten. Now that I have an eshell, everything is simple, and the next one is in multiple units. The server executes the df -h, ulimit -a, and ls /opt commands as an example:__
 
 
-> df、ulimit、ls三个指令为例：
+> For example, df, ulimit, and ls are examples:
 ```
 eshell:
     - shell_cell:
@@ -248,13 +248,13 @@ eshell:
              - ls /opt
 ```
 
-* 执行
+* Carried out
 ```
-$ eshell  [配置文件]
+$ eshell  [profile]
 ```
-> 执行过程中可能会有警告信息CryptographyDeprecationWarning，这是因为paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，不影响使用，若觉得碍眼可以将cryptography版本调整为2.4.2。
+> There may be a warning message CryptographyDeprecationWarning during execution. This is because some methods referenced in paramiko may be discarded in cryptography&gt;=2.6.1 or later, which does not affect the use. If you feel uncomfortable, you can adjust the cryptography version to 2.4.2.
 
-> 执行完成后echeck.log打印日志如下：
+> After the execution is complete, the echeck.log print log is as follows:
 
 ```
  /~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -331,11 +331,11 @@ $ eshell  [配置文件]
  *************************************************/
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
 ```
-## 常见问题
+## Common problem
 
-### 运行时警告
+### Runtime warning
 
-> __paramiko中引用的一些方法在cryptography>=2.6.1以上版本可能废弃，所以在运行过程中可能会有以下警告信息:__
+> __Some of the methods referenced in paramiko may be deprecated in cryptography&gt;=2.6.1 or later, so there may be the following warning message during the run:__
 
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
 > * CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
@@ -343,22 +343,22 @@ $ eshell  [配置文件]
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
   hm.add_string(self.Q_C.public_numbers().encode_point())
   
-> **建议将cryptography版本调整为2.4.2。**
+> **It is recommended to adjust the cryptography version to 2.4.2.**
 
-### 安装过程报错
+### The installation process gives an error
 
-> * 安装echeck报错
+> * Install echeck error
 
 ```markdown
 Failed building wheel for pycurl
 ```
 
-> __解决方法安装前先执行:__
+> __Solution Perform before installing:__
 ```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 ```
-> * 安装pycurl时报找不到openssl/ssl.h的错误
+> * Cannot find openssl/ssl.h error when installing pycurl
 ```
 
 src/pycurl.h:164:13: fatal error: 'openssl/ssl.h' file not found
@@ -370,13 +370,13 @@ src/pycurl.h:164:13: fatal error: 'openssl/ssl.h' file not found
     ----------------------------------------
 
 ```
-> 解决办法安装openssl
+> Solution install openssl
 
-__在mac下执行如下指令__
+__Execute the following command under mac__
 ```
 $ brew install openssl
 ```
-__因为考虑到用户可能会使用TLS，brew在安装openssl时不会设置为默认首选模块，所以为了在使用或编译时可以找到openssl，需要做如下设置__
+__Because considering that users may use TLS, brew will not be set as the default preferred module when installing openssl, so in order to find openssl when using or compiling, you need to make the following settings:__
 
 ```markdown
 $ echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
@@ -386,7 +386,7 @@ $ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 $ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
 ```
-__然后在执行pycurl的安装指令__
+__Then execute the pycurl installation instructions__
 ```markdown
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
@@ -394,11 +394,11 @@ $ pip install pycurl
 > *安装openssl
 __openssl在windows上安装比较复杂，在安装之前最好现在网上找到最新版openssl exe安装包__
 
-## 版本说明
+## Release notes
 
-* 2.0.2版本
-> 1. 为了方便标识设备，增强设备的辨识性，在eshell、escan指令中增加了label设置，用户可以根据实际需求用户个性化的标签标识设备
-> 2. 在这个版本中同时补充了使用说明以及常见错误的处理方法
+* Version 2.0.2
+> 1. In order to facilitate the identification of the device and enhance the identification of the device, the label setting is added to the eshell and escan commands, and the user can identify the device by the user according to the actual needs.
+> 2. In this version, the instructions for use and the handling of common errors are added.
 
 
 [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
