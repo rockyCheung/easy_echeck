@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 import os
 
-with open("README.md", "r") as fh:
+with open("README_EN.md", "r") as fh:
     long_description = fh.read()
 
 # with open('LICENSE') as fp:
@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='echeck',
-    version='2.0.2',
+    version='2.0.3',
     description='简单易用的批量环境检查工具',
     long_description=long_description,
     # long_description_content_type="text/x-rst",

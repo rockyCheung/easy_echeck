@@ -412,7 +412,7 @@ $ pip install pycurl
 ```
 > * Install openssl
 
-__openssl在windows上安装比较复杂，在安装之前最好现在网上找到最新版openssl exe安装包__
+__Openssl installation on windows is more complicated, it is best to find the latest version of openssl exe installation package online before installation.__
 
 ## Release notes
 
