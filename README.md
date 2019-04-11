@@ -26,26 +26,44 @@
 * python3下载
 
 > [Python下载地址](https://www.python.org)
-
 * 选择对应版本进行安装即可
 
-#### 2. 安装virtualenv
+```
+$ curl -Ok  https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+$ tar -xzvf Python-3.7.3.tgz
+$ cd Python-3.7.3
+$ ./configure
+$ make && make install
+```
+#### 2. 安装pip
+
+* 下载安装脚本
+
+```
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+```
+* 执行安装指令
+
+```
+$ python get-pip.py
+```
+#### 3. 安装virtualenv
 
 > 建议使用virtualenv，以简化外部环境对工具安装带来的影响,如果是linux或mac，可采用如下命令进行安装
 ```
 $ pip install virtualenv
 ```
 > 可执行help查看virtualenv使用指令
-#### 3. 创建虚拟环境
+#### 4. 创建虚拟环境
 ```
 $ virtualenv -p '指定python安装路径' venv
 ```
-#### 4. 激活虚拟环境
+#### 5. 激活虚拟环境
 ```
 $ source venv/bin/activate
 ```
 
-#### 5. 安装ECHECK
+#### 6. 安装ECHECK
 
 > 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
 
