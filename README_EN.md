@@ -391,7 +391,8 @@ __Then execute the pycurl installation instructions__
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 ```
-> *安装openssl
+> * Install openssl
+
 __openssl在windows上安装比较复杂，在安装之前最好现在网上找到最新版openssl exe安装包__
 
 ## Release notes
