@@ -28,24 +28,43 @@
 > [Python download address](https://www.python.org)
 
 * Select the corresponding version to install
+```
+$ curl -Ok  https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+$ tar -xzvf Python-3.7.3.tgz
+$ cd Python-3.7.3
+$ ./configure
+$ make && make install
+```
 
-#### 2. Install virtualenv
+#### 2. Install pip
+
+* Download the installation script
+```
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+```
+* Execute the installation instructions
+
+```
+$ python get-pip.py
+```
+
+#### 3. Install virtualenv
 
 > It is recommended to use virtualenv to simplify the impact of the external environment on the tool installation. If it is linux or mac, you can use the following command to install it.
 ```
 $ pip install virtualenv
 ```
 > Executable help to view the virtualenv use instructions
-#### 3. Create a virtual environment
+#### 4. Create a virtual environment
 ```
 $ virtualenv -p 'specify python installation path' venv
 ```
-#### 4. Activate the virtual environment
+#### 5. Activate the virtual environment
 ```
 $ source venv/bin/activate
 ```
 
-#### 5. Install ECHECK
+#### 6. Install ECHECK
 
 > Before installing ECHECK, you need to install pycurl&gt;=7.43.0.2
 

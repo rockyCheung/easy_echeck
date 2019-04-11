@@ -405,16 +405,19 @@ $ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
 ```
 __然后在执行pycurl的安装指令__
-```markdown
+
+```
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 ```
-> *安装openssl
+> * 安装openssl
+
 __openssl在windows上安装比较复杂，在安装之前最好现在网上找到最新版openssl exe安装包__
 
 ## 版本说明
 
 * 2.0.2版本
+
 > 1. 为了方便标识设备，增强设备的辨识性，在eshell、escan指令中增加了label设置，用户可以根据实际需求自定义个性化的标签
 > 2. 在这个版本中同时补充了使用说明以及常见错误的处理方法
 
