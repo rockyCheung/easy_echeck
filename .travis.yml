@@ -22,15 +22,9 @@ install:
 #  - export LDFLAGS="-L/usr/local/openssl/lib"
 #  - export CPPFLAGS="-I/usr/local/openssl/include"
 #  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
-  - sudo apt-get install -y openssl
-  - openssl version
-  - whereis openssl
-  - export PYCURL_SSL_LIBRARY="openssl"
-  - sudo find / -name "pkgconfig"
-  - export PYCURL_CURL_CONFIG="/usr/bin/curl-config"
-#  - export LDFLAGS="/usr/lib"
-#  - export CPPFLAGS="/usr/include"
-#  - export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
+  - sudo apt-get install -y nss
+  - whereis nss
+  - export PYCURL_SSL_LIBRARY=nss
   - pip install pycurl
   - python setup.py install
 #virtualenv:

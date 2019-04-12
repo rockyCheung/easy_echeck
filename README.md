@@ -23,17 +23,15 @@
 #### 1. 安装Python3
 
 > 工具的开发基于Python3.7版本，未做过兼容性测试，使用时尽量安装3.7版本
-* python3下载
-
-> [Python下载地址](https://www.python.org)
-* 选择对应版本进行安装即可
+* python3下载安装
 
 ```
 $ curl -Ok  https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
 $ tar -xzvf Python-3.7.3.tgz
 $ cd Python-3.7.3
 $ ./configure
-$ make && make install
+$ make
+$ sudo make install
 ```
 #### 2. 安装pip
 
@@ -56,25 +54,54 @@ $ pip install virtualenv
 > 可执行help查看virtualenv使用指令
 #### 4. 创建虚拟环境
 ```
-$ virtualenv -p '指定python安装路径' venv
+$ virtualenv -p `which python3` venv
 ```
 #### 5. 激活虚拟环境
 ```
 $ source venv/bin/activate
 ```
 
-#### 6. 安装ECHECK
+#### 6. 安装pycurl
 
 > 在安装ECHECK前，需要先安装pycurl>=7.43.0.2
 
-* 安装pycurl
+* pip/easy_install安装pycurl
 
-__在安装pycurl前要确保已经安装了openssl，对于如何安装openssl，将在"常见问题"章节中进行详细说明__
+> __在安装pycurl前要确保已经安装了openssl，对于如何安装openssl，将在"常见问题"章节中进行详细说明__
+
+> 通常情况下在按装前需要先指定SSL参数，openssl无法搞定的情况下可以选择nss
+
 ```
-$ export PYCURL_SSL_LIBRARY=openssl
+$ export PYCURL_SSL_LIBRARY=[openssl,nss,TLS]
+```
+> 执行安装
+
+```
+$ easy_install pycurl
 $ pip install pycurl
+```
+
+> 如果需要指定curl-config，可在执行安装前执行
 
 ```
+$ export PYCURL_CURL_CONFIG=/usr/local/bin/curl-config
+```
+> __curl-config是curl的运行环境配置，可以在/usr/bin或/usr/local/bin/找到__
+
+* 源代码编译安装
+
+> __在Linux/unix上经常出现指定ssl失效的情况，所以建议采用源码编译方式安装__
+
+> github下载Pycurl源代码，然后执行安装操作
+
+```
+$ unzip pycurl-master.zip
+$ cd pycurl-master
+$ python3 setup.py --with-[openssl,nss,TLS] install --curl-config=/usr/bin/curl-config
+```
+> openssl不能使用的情况下也可以使用nss，python3 setup.py --with-nss install
+
+#### 7. 安装ECHECK
 
 * 源代码安装
 
@@ -362,42 +389,52 @@ $ eshell  [配置文件]
 > * CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
   hm.add_string(self.Q_C.public_numbers().encode_point())
   
-> **建议将cryptography版本调整为2.4.2。**
+> **建议将cryptography版本调整为2.4.2**
 
 ### 安装过程报错
 
-> * 安装echeck报错
+#### 1. python安装报错
 
-```markdown
-Failed building wheel for pycurl
-```
-
-> __解决方法安装前先执行:__
-```
-$ export PYCURL_SSL_LIBRARY=openssl
-$ pip install pycurl
-```
-> * 安装pycurl时报找不到openssl/ssl.h的错误
-```
-
-src/pycurl.h:164:13: fatal error: 'openssl/ssl.h' file not found
-    #   include <openssl/ssl.h>
-                ^~~~~~~~~~~~~~~
-    1 error generated.
-    error: command 'gcc' failed with exit status 1
-    
-    ----------------------------------------
+* linux上安装报错zipimport.ZipImportError: can't decompress data; zlib not available
 
 ```
-> 解决办法安装openssl
+$ yum -y install zlib*
+```
 
-__在mac下执行如下指令__
+* linux上安装报错ModuleNotFoundError: No module named '_ctypes'
+```
+$ yum install libffi-devel -y
+```
+
+#### 1. openssl安装报错
+
+__openssl在不同操作系统上的安装差异较大__
+
+* windows上安装
+
+> 在windows上安装与mac、linux、unix上差异较大，可以参考官网资料[安装说明](https://github.com/openssl/openssl/blob/master/INSTALL)
+
+* mac上安装
+
+> 可以用brew进行安装
 ```
 $ brew install openssl
 ```
-__因为考虑到用户可能会使用TLS，brew在安装openssl时不会设置为默认首选模块，所以为了在使用或编译时可以找到openssl，需要做如下设置__
+> 可以采用源代码编译方式安装，可以参考官网资料[安装说明](https://github.com/openssl/openssl/blob/master/INSTALL)
 
-```markdown
+* linux/unix上安装
+
+> 可以采用源代码编译方式安装，可以参考官网资料[安装说明](https://github.com/openssl/openssl/blob/master/INSTALL)
+
+* 安装检查
+
+```
+$ openssl
+```
+> 执行指令后没有跳转到openssl运行交互环境，那说明没有设置为首先项
+> __因为考虑到用户可能会使用TLS，brew在安装openssl时不会设置为默认首选模块，所以为了在使用或编译时可以找到openssl，需要做如下设置__
+
+```
 $ echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
 $ source ~/.bash_profile
 $ export LDFLAGS="-L/usr/local/opt/openssl/lib"
@@ -405,15 +442,51 @@ $ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 $ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
 ```
-__然后在执行pycurl的安装指令__
+
+#### 2. 安装pycurl报错
+
+* 安装pycurl时报找不到ssl模块
+
+> __重新安装Python3，需要指定ssl参数__
 
 ```
+$ ./configure --with-ssl
+$ make
+$ sudo make install
+```
+
+* linux安装pycurl时报找不到openssl/ssl.h的错误
+
+```
+$ yum install libssl*
+```
+
+* linux下安装pycurl时报不能运行curl-config，找不到'curl-config'的错误
+
+```
+$ yum install libcurl-devel -y
 $ export PYCURL_SSL_LIBRARY=openssl
 $ pip install pycurl
 ```
-> * 安装openssl
 
-__openssl在windows上安装比较复杂，在安装之前最好现在网上找到最新版openssl exe安装包__
+* linux下运行echeck指令报ImportError: pycurl: libcurl link-time ssl backend (nss) is different from compile-time ssl backend (openssl)
+
+> 可采用源代码方式进行安装，安装指定--with-openssl参数，openssl相关的问题是顽疾，可以替换为nss，redhat上已经试验成功～
+* 源代码安装pycurl过程报src/docstrings.c：没有那个文件或目录
+
+> 可以执行python setup.py docstrings
+```
+$ python3 setup.py docstrings
+```
+
+#### 3. 安装echeck报错
+
+```
+Failed building wheel for pycurl
+```
+
+> __请检查pycurl是否已正确安装__
+
 
 ## 版本说明
 
