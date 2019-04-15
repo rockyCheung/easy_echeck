@@ -6,23 +6,11 @@ python:
 #before_install:
 #  - sudo apt-get install -y openssl
 install:
-#  - pip install -r requirement.rst
-#  - brew install openssl
-#  - curl -sSf -o openssl-1.0.2r.tar.gz https://www.openssl.org/source/openssl-1.0.2r.tar.gz
-#  - sudo tar xvf openssl-1.0.2r.tar.gz
-#  - sudo chmod -R 777 openssl-1.0.2r/
-#  - sudo mkdir /home/travis/build/rockyCheung/easy_echeck/openssl-1.0.2r/crypto/lib
-#  - cd openssl-1.0.2r/
-#  - ./config --prefix=/usr/local --openssldir=/usr/local/openssl
-#  - ./config
-#  - sudo make && make install
-#  - which openssl
-#  - echo 'export PATH="/usr/local/openssl/bin:$PATH"' >> ~/.bash_profile
-#  - source ~/.bash_profile
 #  - export LDFLAGS="-L/usr/local/openssl/lib"
 #  - export CPPFLAGS="-I/usr/local/openssl/include"
 #  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
 #  - sudo apt-get install -y nss
+  - sudo apt-get install ruby-coveralls
   - sudo apt-get install libghc-gnutls-dev
   - whereis gnutls
   - export PYCURL_SSL_LIBRARY=gnutls
