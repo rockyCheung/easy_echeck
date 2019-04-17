@@ -1,11 +1,9 @@
 #!/usr/bin/python
 import socket
 import sys
-import argparse
 from sys import platform
 import os
 import time
-import re
 
 
 def start_system():

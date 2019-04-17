@@ -6,7 +6,6 @@ import struct
 import select
 import time
 import threading
-import logging
 from echeck.ec_exception import PingError,TimeExceeded,TimeToLiveExpired,HostUnknown,Timeout
 from echeck.enums import ICMP_DEFAULT_CODE, IcmpType, IcmpTimeExceededCode, IcmpDestinationUnreachableCode
 
