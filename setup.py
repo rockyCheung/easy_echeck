@@ -12,7 +12,7 @@ with open("README_EN.md", "r") as fh:
 
 setup(
     name='echeck',
-    version='2.0.3',
+    version='2.0.4',
     description='简单易用的批量环境检查工具',
     long_description=long_description,
     # long_description_content_type="text/x-rst",
@@ -38,7 +38,7 @@ setup(
     install_requires=['pycurl>=7.43.0.2','beautifulsoup4>=4.7.1','soupsieve>=1.8','wheel>=0.33.1','setuptools>=40.8.0',
                       'PyYAML>=3.13','nmap>=0.0.1','paramiko>=2.4.2','asn1crypto>=0.24.0','bcrypt>=3.1.6','cffi>=1.12.2',
                       'cryptography>=2.4.2','paramiko>=2.4.2','pyasn1>=0.4.5','pycparser>=2.19','pynacl>=1.3.0','six>=1.12.0',
-                      'pytest>=4.3.1'],
+                      'pytest>=4.3.1','wrapt>=1.11.1'],
     package_data={
         # If any package contains *.txt or *.rst files, include them:
         '': ['*.txt', '*.rst','tmplate_conf.yml','*.md'],

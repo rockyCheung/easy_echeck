@@ -496,6 +496,9 @@ Failed building wheel for pycurl
 > 1. 为了方便标识设备，增强设备的辨识性，在eshell、escan指令中增加了label设置，用户可以根据实际需求自定义个性化的标签
 > 2. 在这个版本中同时补充了使用说明以及常见错误的处理方法
 
+* 2.0.4版本
+
+> 1. 优化代码，提升配置加载容错性
 
 [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 [pathcurve](http://www.pathcurve.cn)

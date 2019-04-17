@@ -18,3 +18,4 @@ six>=1.12.0
 python-gnutls>=3.1.2
 pytest>=4.3.1 --global-option="--with-openssl"
 python-coveralls>=2.9.1
+wrapt>=1.11.1

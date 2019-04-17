@@ -1,64 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from echeck.log.Logger import Logger
-import sys,os
-from echeck.conf.config import Config
 from echeck.Curlclient import Curlclient
 from echeck.eping import *
 from echeck.escan import EScan
 from echeck.eshell import EShell
+from echeck.wrapped.pretty_decorator import *
 
-def banner():
-    print('''
------------------------------------------------------------
- _______   ______  __     __  _______   ______  __   _
-(  _____)(  ____ \(  )   (  |(  _____)(  ____ \(  ) / )
-| (      | (    \/|  (   )  || (      | (    \/|  (/ /
-| (_____ | |      |  (___)  || (_____ | |      |    /
-|  _____)| |      |   ___   ||  _____)| |      |    \
-| (      | |      |  (   )  || (      | |      |  (\ \
-| )_____ | (____/\|  )   (  || )_____ | (____/\|  ) \_)
-|_______)(_______/|__)   (__||_______)(_______/|__)
-
-------------------------------------------------------------
-    ''')
-
-try:
-    banner()
-    os.mknod("echeck_std.log")
-except Exception as e:
-    print ("creat file failed.",e)
-
-log_file = open("echeck_std.log", "a")
-sys.stdout = log_file
-
-
-profile = "conf.yml"
-
-if len(sys.argv) > 1:
-    profile = sys.argv[1]
-    print('the conf file is: %s ',profile)
-
-props = Config(profile)  # 读取文件
-url_list = props.getURLS()
-ip_list = props.getIPList()
-ping_timeout = props.getPingTimeout()
-ping_count = props.getPingCount()
-host_list = props.getHostAndPort()
-eshell_cmds = props.getEShellCommands()
-indexFile = props.getIndexFile()
-logFile = props.getLogFile()
-loggerLevel = props.getLoggerLevel()
-logger_name = props.getLoggerName()
-log = Logger(logFile)
-logger = log.getLogger(logger_name, loggerLevel)
-
-
-def check_url():
+@banner
+@ecurl_init('conf.yml')
+def check_url(*args):
+    logger = args[2]
     startTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     logger.info('/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     logger.info("excute main ,the default encoding is %s start time %s", sys.getdefaultencoding(), startTime)
-    client = Curlclient(url_list, indexFile)
+    client = Curlclient(args[0], args[1])
     res_list = client.docheck()
     for res in res_list:
         logger.info('/*************************************************')
@@ -80,18 +35,24 @@ def check_url():
     logger.info("excute main ,end time %s", endTime)
     logger.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n')
 
-def check_ip():
-    for ip in ip_list:
-        verbose_ping(ip,ping_count,timeout=ping_timeout,logger=logger)
+@banner
+@eping_init('conf.yml')
+def check_ip(*args):
+    for ip in args[0]:
+        verbose_ping(ip,args[2],timeout=args[1],logger=args[3])
 
-def scan_port():
-    escan = EScan(host_list)
-    escan.loopSacn(logger=logger)
+@banner
+@escan_init('conf.yml')
+def scan_port(*args):
+    escan = EScan(args[0])
+    escan.loopSacn(logger=args[1])
 
-def exec_comand():
-    for shell_box in eshell_cmds:
+@banner
+@eshell_init('conf.yml')
+def exec_comand(*args):
+    for shell_box in args[0]:
         shell_cell = shell_box['shell_cell']
         eshell = EShell(shell_cell['ip'],shell_cell['label'],shell_cell['port'],shell_cell['user_name'],shell_cell['password'])
-        eshell.exec_commands(shell_cell['exec_command'],logger=logger)
+        eshell.exec_commands(shell_cell['exec_command'],logger=args[1])
 # if __name__ == '__main__':
 #     scan_port()
