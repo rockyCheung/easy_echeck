@@ -5,7 +5,7 @@
 [![PyPI version](https://badge.fury.io/py/echeck.svg)](https://badge.fury.io/py/echeck)
 [![Build Status](https://travis-ci.org/rockyCheung/easy_echeck.svg?branch=master)](https://travis-ci.org/rockyCheung/easy_echeck)
 [![COVERALLS](https://coveralls.io/repos/github/rockyCheung/easy_echeck/badge.svg?branch=master)](https://coveralls.io/github/rockyCheung/easy_echeck)
-[![PyPI](https://pypi.org/static/images/logo-small.6eef541e.svg)](https://pypi.org/project/echeck/)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/easy_echeck/community)
 
 ## ECHECK可以做什么
 
