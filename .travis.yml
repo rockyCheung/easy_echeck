@@ -10,7 +10,7 @@ install:
 #  - export CPPFLAGS="-I/usr/local/openssl/include"
 #  - export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
 #  - sudo apt-get install -y nss
-  - sudo apt-get install ruby-coveralls
+#  - sudo apt-get install ruby-coveralls
   - sudo apt-get install libghc-gnutls-dev
   - whereis gnutls
   - export PYCURL_SSL_LIBRARY=gnutls
